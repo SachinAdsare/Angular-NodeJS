@@ -1,0 +1,26 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+
+  <div class="navbar-nav" *ngIf="role=='Admin'">
+    <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">All User Post</a>
+      <a class="nav-item nav-link" routerLink="/posts" routerLinkActive="active">My Posts</a>
+
+  </div>
+
+  <div
+    class="collapse navbar-collapse justify-content-end"
+    id="navbarSupportedContent"
+  >
+    <div class="navbar-nav">
+      <a class="nav-item nav-link">Hi {{ username }}!</a>
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<!-- main app container -->
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+
+<app-alerts></app-alerts>
+  <router-outlet></router-outlet>
+</div>

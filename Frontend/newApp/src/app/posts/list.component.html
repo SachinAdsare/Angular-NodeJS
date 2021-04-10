@@ -1,0 +1,33 @@
+﻿
+<div style="padding: 10px;" class="px-5">
+  <h1>Posts({{count}})</h1>
+
+<a routerLink="add" class="btn btn-sm btn-success mb-2 float-right">Add post</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 10%"></th>
+      <th style="width: 50%">Post Title</th>
+      <th style="width: 50%">Created Date</th>
+      <th style="width: 50%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of posts;let i=index">
+      <td>{{i+1}}</td>
+      <td>{{ post.postTitle }}</td>
+      <td>{{ post.createdAt | date: "MMM d, y, h:mm:ss a" }}</td>
+      <td><button class="btn btn-sm btn-danger mb-2 " (click)="delete(post.id)">Delete</button></td>
+    </tr>
+    <tr *ngIf="!posts">
+      <td colspan="4" class="text-center">
+        <span class="spinner-border spinner-border-lg align-center"></span>
+      </td>
+    </tr>
+  </tbody>
+  <div *ngIf="count<1" style="text-align: center;">
+    No Data
+  </div>
+</table>
+</div>

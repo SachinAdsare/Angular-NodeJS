@@ -1,0 +1,46 @@
+###Register (Add Admin)
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "name":"jhon",
+  "role":"Admin",
+  "email": "jhondoe1@gmail.com",
+  "password": "1234"
+}
+
+###Login Route
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "jhondoe@gmail.com",
+  "password": "1234"
+}
+
+
+
+
+###Add UserPost
+POST http://localhost:3000/userpost/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYxODA1NjIwMH0.hcCq2_9R6KDToujMm9-6fop9jp--3EcXfgcca9hKfZs
+
+{
+  "postTitle":"Post Data"
+}
+
+###Get AllUserPost
+get http://localhost:3000/userpost/all
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsInJvbGUiOiJBZG1pbiIsImlhdCI6MTYxODA2OTIwN30.LiGj-xdmRNiqY5MFqnWNtcjJw_tzOeR4M6VhqlIaepg
+
+###Get AllParticularUser'sPost
+get http://localhost:3000/userpost/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTYxODA1MjAyOX0.RPsosazzk7d44u-aVCuQTWCG7nWbldlDy7wi5asbzc0
+
+###Get deletePost
+DELETE  http://localhost:3000/userpost/6
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTYxODA1MjAyOX0.RPsosazzk7d44u-aVCuQTWCG7nWbldlDy7wi5asbzc0

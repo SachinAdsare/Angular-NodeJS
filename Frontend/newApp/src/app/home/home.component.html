@@ -1,0 +1,65 @@
+﻿<div *ngIf="viewList">
+<h1 class="pt-2 pl-5">User-Post List:</h1>
+<div style="padding: 10px;" class="px-5">
+<table class="table table-striped " >
+    <thead>
+        <tr>
+          <th style="width: 10%"></th>
+            <th style="width: 30%">User Name</th>
+            <th style="width: 30%">Email</th>
+            <th style="width: 20%">Post Count</th>
+            <th style="width: 20%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users;let i=index">
+          <td>{{i+1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.UserPosts.length}}</td>
+            <td><button class="btn btn-sm btn-primary" (click)="view(user.id)" [disabled]="user.UserPosts.length<1">View</button></td>
+        </tr>
+
+        <tr *ngIf="!users">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+    <div *ngIf="users?.length < 1" style="text-align: center;">
+      No Data
+    </div>
+</table>
+</div>
+</div>
+<div *ngIf="!viewList">
+  <div style="padding: 10px;" class="px-5">
+
+
+  <button  class="btn btn-sm btn-success mb-2 " (click)="viewList=!viewList">Back</button>
+  <h3 class="float-right">{{userData.name}}'s Posts({{userData?.UserPosts?.length}})</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 10%"></th>
+        <th style="width: 30%">Post Title</th>
+        <th style="width: 30%">Created Date</th>
+        <th style="width: 20%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of userData?.UserPosts;let i=index;">
+        <td>{{i+1}}</td>
+        <td>{{ post.postTitle }}</td>
+        <td>{{ post.createdAt | date: "MMM d, y, h:mm:ss a" }}</td>
+        <td><button class="btn btn-sm btn-danger mb-2 " (click)="delete(post.id)" >Delete</button></td>
+      </tr>
+
+
+    </tbody>
+    <div *ngIf="userData?.UserPosts?.length < 1" style="text-align: center;">
+      No Data
+    </div>
+  </table>
+  </div>
+</div>
